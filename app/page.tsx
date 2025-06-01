@@ -4,6 +4,7 @@ import {
   ActionIcon,
   Avatar,
   Box,
+  Button,
   Container,
   Group,
   Paper,
@@ -11,15 +12,17 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
-import { PaperPlaneRightIcon } from "@phosphor-icons/react";
+import { MusicNoteIcon, PaperPlaneRightIcon } from "@phosphor-icons/react";
 import { useEffect, useRef, useState } from "react";
 
 import axios from "axios";
 import { randomId } from "@mantine/hooks";
 
 import ReactMarkdown from "react-markdown";
+import { useRouter } from "next/navigation";
 
 export default function PageChat() {
+  const Router = useRouter();
   const [sessionId, setSessionId] = useState(randomId());
   const [chatHistory, setChatHistory] = useState<
     { role: "user" | "bot"; message: string }[]
@@ -179,7 +182,7 @@ export default function PageChat() {
 
         <ActionIcon
           pos="absolute"
-          right={-54}
+          right={-48}
           bottom={26}
           size="lg"
           color="teal"
@@ -190,6 +193,23 @@ export default function PageChat() {
         >
           ↻
         </ActionIcon>
+
+        <Button
+          size="xs"
+          pos="absolute"
+          left={-140}
+          bottom={26}
+          color="dark"
+          radius="lg"
+          variant="filled"
+          onClick={() => {
+            Router.push("/toner");
+          }}
+          title="Clear chat and reset session"
+          leftSection={<MusicNoteIcon size={12} />}
+        >
+          To Tone-izer
+        </Button>
       </Paper>
     </Container>
   );
