@@ -55,9 +55,9 @@ export default function PageToner() {
       );
 
       setLoading(false);
-
+console.log(res)
       // Access actual response data
-      const reply = res.data[0]?.output || "⚠️ Empty response from server.";
+      const reply = res.data?.output || "⚠️ Empty response from server.";
 
       setChatHistory((prev) => [...prev, { role: "bot", message: reply }]);
     } catch (error) {
