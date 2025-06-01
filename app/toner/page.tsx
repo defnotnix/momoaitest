@@ -213,7 +213,7 @@ console.log(res)
             radius="lg"
             variant="filled"
             onClick={() => {
-              Router.push("/toner");
+              Router.push("/");
             }}
             title="Clear chat and reset session"
             leftSection={<ChatIcon size={12} />}
